@@ -20,5 +20,4 @@ def destinations(request):
 
 def destination(request , id = 0):
     #\d{8}\w[et]\d{6}
-    mongodbconn.fetchData()
     return render(request , 'destination_template.html')
