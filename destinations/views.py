@@ -1,7 +1,7 @@
 from django.shortcuts import render , HttpResponse
 
 des = {
-        "id" : "card1",
+        "id" : "20200325et122631",
         "imgURL" : "",
         "rating" : [1,1,1,1,0],
         "ratingnum" : "4.0",
@@ -16,5 +16,6 @@ def destinations(request):
     context = {"destinationlist" : destination}
     return render(request , 'destination.html',context)
 
-def destination(request , id=1):
+def destination(request , id = 0):
+    #\d{8}\w[et]\d{6}
     return  HttpResponse("For page of id " + str(id))
