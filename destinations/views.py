@@ -1,4 +1,5 @@
 from django.shortcuts import render , HttpResponse
+from destinations import mongodbconn
 
 des = {
         "id" : "20200325et122631",
@@ -19,4 +20,5 @@ def destinations(request):
 
 def destination(request , id = 0):
     #\d{8}\w[et]\d{6}
+    mongodbconn.fetchData()
     return render(request , 'destination_template.html')
