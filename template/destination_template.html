@@ -9,8 +9,8 @@
         </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <link rel="icon" href="{% static 'img/logo.jpg' %}">
-        <link rel="stylesheet" href="{%static 'css/icons/css/font-awesome.min.css'%}>
-        <link rel="stylesheet" href = "{%static 'css/destination_template.css' %}">
+        <link rel="stylesheet" href= "{%static 'css/icons/css/font-awesome.min.css'%}">
+        <link rel= "stylesheet" href = "{%static 'css/destination_template.css' %}">
     </head>
     <body>
 
@@ -19,8 +19,8 @@
         <nav class="navbar navbar-light bg-white navbar-expand-lg">
             <div class="container-fluid">
               
-                <a class="navbar-brand h1 fs-3 ms-4" href="index.html">
-                    <img src="img/logo.jpg" alt="" width="60" height="60" class="d-inline-block align-center">
+                 <a class="navbar-brand h1 fs-3 ms-4" href="/home">
+                    <img src="{% static 'img/logo.jpg' %}" alt="" width="60" height="60" class="d-inline-block align-center">
                         clicktovisit.in
                 </a>
 
@@ -40,10 +40,10 @@
                             <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/contact">Contact Us</a>
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg" style="background-color: #22f1f7;">
-                            <a class="nav-link rounded-pill text-white" aria-current="page" href="#">Sign Up</a>
+                            <a class="nav-link rounded-pill text-white" aria-current="page" href="/user/signup">Sign Up</a>
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg">
-                            <a class="nav-link rounded-pill" aria-current="page" href="#" style="color: #22f1f7;">Login</a>
+                            <a class="nav-link rounded-pill" aria-current="page" href="/user/login" style="color: #22f1f7;">Sign In</a>
                         </li>
                     </ul>
                 </div>
@@ -69,7 +69,7 @@
                         <div class="carousel-inner">
                           
                             <div class="carousel-item">
-                                <img src="img/landing.jpg" class="d-block w-100" alt="...">
+                                <img src="{%static 'img/landing.jpg'%}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>First slide label</h5>
                                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -77,7 +77,7 @@
                             </div>
                           
                             <div class="carousel-item">
-                                <img src="img/landing.jpg" class="d-block w-100" alt="...">
+                                <img src="{%static 'img/landing.jpg'%}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Second slide label</h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -85,7 +85,7 @@
                             </div>
                             
                             <div class="carousel-item active">
-                                <img src="img/landing.jpg" class="d-block w-100" alt="...">
+                                <img src="{%static 'img/landing.jpg'%}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Third slide label</h5>
                                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>

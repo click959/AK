@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -19,54 +20,25 @@
       rel="stylesheet"
     />
     <!-- embedded CSS -->
-    <link rel="stylesheet" href="css/signin.css" />
+    <link rel="stylesheet" href="{%static 'css/signin.css' %}" />
 
     <title>Sign In - clicktovisit.in</title>
-    <link rel="icon" href="img/logo.jpg">
+    <link rel="icon" href="{%static 'img/logo.jpg' %}">
   </head>
   <body>
 
-    <!-- Header -->
-    <nav class="navbar navbar-light bg-white navbar-expand-lg">
-      <div class="container-fluid">
-        
-          <a class="navbar-brand h1 fs-3 ms-4" href="index.html">
-              <img src="img/logo.jpg" alt="" width="60" height="60" class="d-inline-block align-center">
-                  clicktovisit.in
-          </a>
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse mb-2 fs-5 justify-content-end ms-lg-5 me-lg-5" id="navbarSupportedContent">
-              <ul class="navbar-nav">
-                  <li class="nav-item ms-lg-3 me-lg-3 px-4 button_hover_color_outer rounded-pill">
-                      <a class="nav-link button_hover_color" aria-current="page" href="home.html">Home</a>
-                  </li>
-                  <li class="nav-item ms-lg-3 me-lg-3 px-4 button_hover_color_outer rounded-pill">
-                      <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="about.html">About Us</a>
-                  </li>
-                  <li class="nav-item ms-lg-3 me-lg-3 px-4 button_hover_color_outer rounded-pill">
-                      <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="contact.html">Contact Us</a>
-                  </li>
-              </ul>
-          </div>
-      
-      </div>
-    </nav>
-
+    <div class="container-fluid" style="height: 15vh;"></div>
     <!-- Main section -->
     <div class="row container-fluid main">
       <!-- left section - Image -->
       <div class="col-sm-6">
-        <img class="img-fluid" src="img/signin.jpg" alt="sign in" style="width: 90%;"/>
+        <img class="img-fluid" src="{%static 'img/signin.jpg' %}" alt="sign in" style="width: 90%;"/>
       </div>
       <!-- right section - form -->
       <div class="col-sm-4 m-auto" id="data">
         <h1>Sign In</h1>
         <h6 class="fw-normal lh-base">
-          Hey, wellcome back! <br />
+          Hey, Welcome back! <br />
           Experience the best services with us.
         </h6>
         <form class="mt-3 d-inline-block">
@@ -92,18 +64,14 @@
           </button>
           <p class="fw-light mt-3 text-center">
             Not registered yet?
-            <a href="signup.html" class="fw-normal text-decoration-none">Sign up</a>
+            <a href="/user/signup" class="fw-normal text-decoration-none">Sign up</a>
           </p>
         </form>
       </div>
     </div>
 
     <!-- Footer -->
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-      </div>
-    </nav>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

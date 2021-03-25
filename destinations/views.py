@@ -10,6 +10,7 @@ des = {
         "duration" : 3,
         "location" : "Agra"
     }
+
 # Create your views here.
 def destinations(request):
     destination = [des , des , des, des , des , des , des , des,des , des , des, des , des , des , des , des]
@@ -18,4 +19,4 @@ def destinations(request):
 
 def destination(request , id = 0):
     #\d{8}\w[et]\d{6}
-    return  HttpResponse("For page of id " + str(id))
+    return render(request , 'destination_template.html')
