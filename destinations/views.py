@@ -14,7 +14,7 @@ des = {
 
 # Create your views here.
 def destinations(request):
-    destination = [des , des , des, des , des , des , des , des,des , des , des, des , des , des , des , des]
+    destination = mongodbconn.fetch_All()
     context = {"destinationlist" : destination}
     return render(request , 'destination.html',context)
 
