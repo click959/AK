@@ -49,7 +49,7 @@
                 {% for des in destinationlist%}
                 <div class="col-lg-3 col-md-6 mt-5">
                     <div class="card mb-30 border border-1 border-bottom border-start border-end hover_fun" id = "{{ des.id }}">
-                        <img src="{%static 'img/destination.jpg'%}" alt="" class = "card-img-top img-fluid">
+                        <img src="{%static des.imgURL %}" alt="" class = "card-img-top img-fluid">
                         <div class="card-body">
                             <div class="place-cap-top">
                                 <div class="fs-5">

@@ -2,7 +2,7 @@ from django.shortcuts import render , HttpResponse
 
 des = {
         "id" : "20200325et122631",
-        "imgURL" : "",
+        "imgURL" : "img/destination.jpg",
         "rating" : [1,1,1,1,0],
         "ratingnum" : "4.0",
         "name" : "The Dark Forest Adventure",
