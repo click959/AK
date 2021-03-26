@@ -27,6 +27,28 @@ color: #ffab00;
 cursor: pointer;
 }
 
+.room-name {
+    width: 100%;
+    margin-right: 0%;
+    padding: 0%;
+}
+
+.booking{
+
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
+}
+
+.more{
+
+    width: 100%;
+    margin-left: 0%;
+    padding: 0%;
+    height: 100%;
+}
+
 
 .footer
 {
