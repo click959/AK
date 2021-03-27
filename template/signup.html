@@ -75,11 +75,23 @@
             <input type="text" class="form-control" placeholder="Full Name" />
           </div>
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Email" />
+            <input type="email" class="form-control" id="CustomerEmailId" placeholder="Email" />
+            <div class="invalid-feedback ms-3">
+                Invalid Email Id
+            </div>
+            <div class="valid-feedback ms-3">
+                Looks good!
+            </div>
           </div>
           <div class="mb-3">
-            <input type="tel" class="form-control" placeholder="Phone" />
-          </div>
+            <input type="tel" class="form-control" id="CustomerPhNum" placeholder="Phone" />
+            <div class="invalid-feedback ms-3">
+              Invalid Phone Number
+            </div>
+            <div class="valid-feedback ms-3">
+                Looks good!
+            </div>
+            </div>
           <div class="mb-3">
             <input
               type="date"
@@ -150,7 +162,7 @@
             </div>
           </div>
     <!-- Optional JavaScript; choose one of the two! -->
-
+    <script src = "{%static 'js/verify.js'%}"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
