@@ -180,7 +180,7 @@
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Select Dates</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">Select Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
@@ -188,6 +188,10 @@
                             <div class="modal-body">
                                 
                                 <div>
+                                <h5>Room Capacity: <span id = "cap">{{room.capacity}}</span></h5>
+                                </div>
+
+                                <div class = "mt-4">
                                 <h5>Number of People</h5>
                                 <input type="Number" class="form-control" placeholder="Number of People" min = "1" max = "10"/>
                                 <div class="invalid-feedback">
@@ -215,7 +219,7 @@
                                 <h5>To: </h5>
                                 <input type="date" class="form-control" placeholder="ToDate" />
                                 <div class="invalid-feedback">
-                                    Not Availabel on selected date
+                                    Not Available on selected date
                                 </div>
                                 </div>
                             </div>
