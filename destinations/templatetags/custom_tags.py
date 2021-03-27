@@ -9,4 +9,4 @@ def to_str(value):
 
 @register.filter
 def combine_str_id(value,prefix):
-    return prefix+value+"d"
+    return prefix+value

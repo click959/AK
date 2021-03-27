@@ -59,12 +59,12 @@
             <div class = "row justify-content-center ms-lg-1">
                 <div class = "col-lg-7 col-md-12 col-sm-12">
                     
-                    <div id="imagecarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div id="imagecarousel" class="carousel slide" data-bs-ride="carousel" data-flickity='{ "lazyLoad": true }'>
                         
                         <ol class="carousel-indicators">
 
                         {%for i in imgrange %}
-                            {% if i == 1%}
+                            {% if i == 0%}
                                 <li data-bs-target="#imagecarousel" class = "active" data-bs-slide-to= {{ i | to_str }}></li>
                             {%else%}  
                                 <li data-bs-target="#imagecarousel" data-bs-slide-to= {{ i | to_str }}></li>
@@ -177,29 +177,44 @@
                 </div>
 
                 <div class="modal fade" id= {{ room.id | combine_str_id:"" }} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="staticBackdropLabel">Select Dates</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
+                            <form class = "mt-2 needs-validation" novalidate>
                             <div class="modal-body">
-                                <div class = "mt-2">
-                                <h4>From: </p>
+                                
+                                <div>
+                                <h5>Number of People</h5>
+                                <input type="Number" class="form-control" placeholder="Number of People" min = "1" max = "10"/>
+                                </div>
+
+                                <div class = "mt-4">
+                                <h5>Number of Rooms</h5>
+                                <input type="Number" class="form-control" placeholder="Number of Rooms" min = "1" max = "10"/>
+                                <div class="invalid-feedback">
+                                    Number of Rooms and Total People do not match
+                                </div>
+                                </div>
+
+                                <div class = "mt-4">
+                                <h5>From: </h5>
                                 <input type="date" class="form-control" placeholder="FromDate" />
                                 </div>
 
-                                <div class = "mt-5">
-                                <h4>To: </p>
+                                <div class = "mt-4">
+                                <h5>To: </h5>
                                 <input type="date" class="form-control" placeholder="ToDate" />
                                 </div>
                             </div>
-                        
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                <button type="button" class="btn btn-success">Add to Cart</button>
+                                <button type="submit" class="btn btn-success">Add to Cart</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -242,4 +257,5 @@
           </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src = {%static 'js/destination_tem.js'%} > </script>
 </html>

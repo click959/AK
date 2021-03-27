@@ -36,7 +36,7 @@ full_des = {
     "duration" : 3,
     "location" : "Agra",
     "points" : ["Couple friendly" , "Beach Sports like Volleyball, Football, Badminton" , "Sea food available" , "Music System available" ],
-    "Rooms" : [{"id": "type1" , "RoomType" : "Room for one" , "cost" : 500 , "imgURL" : "../static/img/landing.jpg" , "about" : s} , {"id": "type2" ,"RoomType" : "Room for two" , "cost" : 700 , "imgURL" : "../static/img/landing.jpg" , "about" : s} , {"id": "type3" ,"RoomType" : "Room for five" , "cost" : 600 , "imgURL" : "../static/img/landing.jpg" , "about" : s}]
+    "Rooms" : [{"id": "type1" , "RoomType" : "Room for one" , "cost" : 500 , "imgURL" : "../static/img/landing.jpg" , "about" : s , "capacity" : 1} , {"id": "type2" ,"RoomType" : "Room for two" , "cost" : 700 , "imgURL" : "../static/img/landing.jpg" , "about" : s, "capacity" : 2} , {"id": "type3" ,"RoomType" : "Room for five" , "cost" : 600 , "imgURL" : "../static/img/landing.jpg" , "about" : s , "capacity" : 5}]
 }
 # Create your views here.
 def destinations(request):
