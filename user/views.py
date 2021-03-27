@@ -30,11 +30,19 @@ def signupUser(request):
     return render(request , 'signup.html')
 
 def loginUser(request):
+    
+    urltoredirect = ""
+    try:
+        value = request.COOKIES.get('lastdestinationvisit')
+        urltoredirect += value
+    except:
+        print("Error")
 
     if request.user.is_authenticated:
-        return render(request , "signin.html" , {"alert" : 0})
+        return render(request , "signin.html" , {"alert" : 0 , "reurl" : urltoredirect})
 
     if request.method == 'POST':
+        print(urltoredirect)
         email = request.POST['email']
         password = request.POST['password']
         email = email.lower()
@@ -42,11 +50,14 @@ def loginUser(request):
         user = authenticate(request, username= username, password=password)
         if user is not None:
             login(request,user)
-            return render(request , "signin.html" , {"alert" : 0})
+            return render(request , "signin.html" , {"alert" : 0 , "reurl" : urltoredirect})
         else:
             return render(request , "signin.html" , {"alert" : 1})        
     return render(request , 'signin.html')
 
 def logoutUser(request):
-    logout(request)
-    return HttpResponse("okay")
+    if request.user.is_authenticated:
+        logout(request)
+        return HttpResponse("okay")
+    else:
+        return render(request , 'signin.html') 

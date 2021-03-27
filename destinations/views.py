@@ -47,4 +47,6 @@ def destinations(request):
 def destination(request , id = 0):
     #\d{8}\w[et]\d{6}
     context = full_des
-    return render(request , 'destination_template.html' , context)
+    response = render(request , 'destination_template.html' , context) 
+    response.set_cookie(key="lastdestinationvisit" , value= full_des['id'] , httponly=True)
+    return response

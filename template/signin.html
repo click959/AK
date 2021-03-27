@@ -49,9 +49,10 @@
         {%else%}
         {%if alert == 0%}
           <div class="alert alert-success" role="alert">
-            Login Successful. You can close this window and refresh the other page
+            Login Successful. Please wait while we redirect you
           </div>
-        {%endif%}
+          <script>setTimeout( function(){window.open( ("/destination/" + "{{ reurl }}") ,"_self" , replace = true)},3000);</script>
+        {%endif%}        
         {% endif %}
         
         {%if alert != 0 %}

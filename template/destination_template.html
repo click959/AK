@@ -47,14 +47,14 @@
                             <!--HREF needed to be added-->
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg" style="background-color: #d9534f !important;">
-                            <a class="nav-link rounded-pill text-white" aria-current="page" href="/user/logout" target="_blank">Logout</a>
+                            <a class="nav-link rounded-pill text-white" aria-current="page" href="/user/logout">Logout</a>
                         </li>
                         {%else%}
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg" style="background-color: #22f1f7;">
                             <a class="nav-link rounded-pill text-white" aria-current="page" href="/user/signup" target="_blank">Sign Up</a>
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg">
-                            <a class="nav-link rounded-pill" aria-current="page" href="/user/login" style="color: #22f1f7;" target="_blank">Sign In</a>
+                            <a class="nav-link rounded-pill" aria-current="page" href="/user/login" style="color: #22f1f7;" >Sign In</a>
                         </li>
                         {%endif%}
                     </ul>
@@ -247,7 +247,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                    <button type="submit" class="btn btn-success">Add to Cart</button>
+                                    <button type="submit" class="btn btn-success" name = "action" value="cart">Add to Cart</button>
                                 </div>
                             </form>
                             {%endif%}

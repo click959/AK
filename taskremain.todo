@@ -1,0 +1,23 @@
+logout page: 
+    ☐ logout page @critical
+    ☐ read cookie and back to destination page
+
+error 404 page:
+    ☐ design page
+    ☐ configure setting to display ther page
+
+general error page:
+    ☐ design page
+    ☐ configure setting to display change
+
+cart:
+    ☐ design cart
+    ☐ configure db design
+    ☐ code
+
+User:
+    ☐ trip data visible
+    ☐ configure db design
+
+dynamic destination loading:
+    ☐ collections in atlas @high 
