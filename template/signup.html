@@ -72,10 +72,10 @@
         <h6 class="fw-normal">Wellcome! let’s start the journey</h6>
         <form class="mt-4 d-inline-block">
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Full Name" />
+            <input required type="text" class="form-control" placeholder="Full Name" />
           </div>
           <div class="mb-3">
-            <input type="email" class="form-control" id="CustomerEmailId" placeholder="Email" />
+            <input required type="email" class="form-control" id="CustomerEmailId" placeholder="Email" />
             <div class="invalid-feedback ms-3">
                 Invalid Email Id
             </div>
@@ -84,7 +84,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <input type="tel" class="form-control" id="CustomerPhNum" placeholder="Phone" />
+            <input required type="tel" class="form-control" id="CustomerPhNum" placeholder="Phone" />
             <div class="invalid-feedback ms-3">
               Invalid Phone Number
             </div>
@@ -93,21 +93,21 @@
             </div>
             </div>
           <div class="mb-3">
-            <input
+            <input required
               type="date"
               class="form-control"
               placeholder="Date of birth"
             />
           </div>
           <div class="mb-3">
-            <input
+            <input required
               type="password"
               class="form-control"
               placeholder="Password"
             />
           </div>
           <div class="mb-3">
-            <input
+            <input required
               type="password"
               class="form-control"
               placeholder="Confirm Password"
@@ -115,6 +115,7 @@
           </div>
           <button
             type="submit"
+            id="submitBtn"
             class="btn btn-primary d-block mt-4 mx-auto rounded-pill"
           >
             Submit
