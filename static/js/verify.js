@@ -1,6 +1,11 @@
+console.log('verificatoiin starts');
+
 // Verify email
 const emailKEY = '79bc1a63cacf35cf76dc58fc3e07070e';
 let email = document.getElementById("CustomerEmailId");
+let flagEmail = false, flagPhone = false;
+
+console.log(flagEmail, flagPhone);
 
 email.addEventListener('blur', ()=> {
     let email = document.getElementById("CustomerEmailId");
@@ -8,12 +13,9 @@ email.addEventListener('blur', ()=> {
     const API = `https://apilayer.net/api/check?access_key=${emailKEY}&email=${emailId}`;
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', API, true);
+    xhr.open('GET', API);
     xhr.getResponseHeader('Content-type', 'application/json');
 
-    xhr.onprogress = function () {
-        //  add spinner while verifying
-    }
     xhr.onload = function() {
         if (this.status == 200)  {
             const verificationResponse = JSON.parse(this.responseText);
@@ -23,10 +25,14 @@ email.addEventListener('blur', ()=> {
             if (smtp && !disposable) {
                 email.classList.remove('is-invalid');
                 email.classList.add('is-valid');
+                flagEmail = true;
+                document.getElementById("submitBtn").disabled = false;
             }
             else {
                 email.classList.remove('is-valid');
                 email.classList.add('is-invalid');
+                flagEmail = false;
+                document.getElementById("submitBtn").disabled = true;
             }
         }
     }
@@ -45,12 +51,9 @@ phone.addEventListener('blur', ()=> {
     const API = `http://apilayer.net/api/validate?access_key=${phoneKEY}&number=${phNumber}&country_code=IN`
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', API, true);
+    xhr.open('GET', API);
     xhr.getResponseHeader('Content-type', 'application/json');
 
-    xhr.onprogress = function () {
-        //  add spinner while verifying
-    }
     xhr.onload = function() {
         if (this.status == 200)  {
             const verificationResponse = JSON.parse(this.responseText);
@@ -59,13 +62,27 @@ phone.addEventListener('blur', ()=> {
             if (valid) {
                 phone.classList.remove('is-invalid');
                 phone.classList.add('is-valid');
+                flagEmail = true;
+                document.getElementById("submitBtn").disabled = false;
             }
             else {
                 phone.classList.remove('is-valid');
                 phone.classList.add('is-invalid');
+                flagEmail = false;
+                document.getElementById("submitBtn").disabled = true;
             }
         }
     }
 
     xhr.send();
 });
+
+/* ASYNC-AWAIT
+
+console.log(flagEmail, flagPhone);
+
+if (flagEmail && flagPhone)
+    document.getElementById("submitBtn").disabled = false;
+else
+    document.getElementById("submitBtn").disabled = true;
+*/
