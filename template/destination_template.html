@@ -145,7 +145,7 @@
                     <div class = "col-lg-9 col-md-8 col-sm-10 me-0">
                     <div class = "row room-name ms-3">
                         <div class = "col-9 h2">{{room.RoomType}}</div>
-                        <div class = "col-3 mt-2 pt-1 h5">{{room.cost}} per person</div>
+                        <div class = "col-3 mt-2 pt-1 h5">{{room.cost}} per person per day</div>
                     </div>  
                     </div>
 
@@ -184,49 +184,50 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form class = "mt-2 needs-validation" novalidate>
-                            <div class="modal-body">
-                                
-                                <div>
-                                <h5>Room Capacity: <span id = "cap">{{room.capacity}}</span></h5>
-                                </div>
+                            <form class = "mt-2 needs-validation" method = "post">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    
+                                    <div>
+                                    <h5>Room Capacity: <span id = "cap">{{room.capacity}}</span></h5>
+                                    </div>
 
-                                <div class = "mt-4">
-                                <h5>Number of People</h5>
-                                <input type="Number" class="form-control" placeholder="Number of People" min = "1" max = "10"/>
-                                <div class="invalid-feedback">
-                                    Please check once 
-                                </div>
-                                </div>
+                                    <div class = "mt-4">
+                                    <h5>Number of People</h5>
+                                    <input type="Number" class="form-control" placeholder="Number of People" min = "1" required>
+                                    <div class="invalid-feedback">
+                                        Please check once 
+                                    </div>
+                                    </div>
 
-                                <div class = "mt-4">
-                                <h5>Number of Rooms</h5>
-                                <input type="Number" class="form-control" placeholder="Number of Rooms" min = "1" max = "10"/>
-                                <div class="invalid-feedback">
-                                    Number of Rooms and Total People do not match
-                                </div>
-                                </div>
+                                    <div class = "mt-4">
+                                    <h5>Number of Rooms</h5>
+                                    <input type="Number" class="form-control" placeholder="Number of Rooms" min = "1" max = {{room.avail}} required>
+                                    <div class="invalid-feedback">
+                                        Number of Rooms and Total People do not match
+                                    </div>
+                                    </div>
 
-                                <div class = "mt-4">
-                                <h5>From: </h5>
-                                <input type="date" class="form-control" placeholder="FromDate" />
-                                <div class="invalid-feedback">
-                                    Not Availabel on selected date
-                                </div>
-                                </div>
+                                    <div class = "mt-4">
+                                    <h5>From: </h5>
+                                    <input type="date" class="form-control" placeholder="FromDate" required>
+                                    <div class="invalid-feedback">
+                                        Not Availabel on selected date
+                                    </div>
+                                    </div>
 
-                                <div class = "mt-4">
-                                <h5>To: </h5>
-                                <input type="date" class="form-control" placeholder="ToDate" />
-                                <div class="invalid-feedback">
-                                    Not Available on selected date
+                                    <div class = "mt-4">
+                                    <h5>To: </h5>
+                                    <input type="date" class="form-control" placeholder="ToDate" required>
+                                    <div class="invalid-feedback">
+                                        Not Available on selected date
+                                    </div>
+                                    </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
+                                    <button type="submit" class="btn btn-success">Add to Cart</button>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                <button type="submit" class="btn btn-success">Add to Cart</button>
-                            </div>
                             </form>
                         </div>
                     </div>
