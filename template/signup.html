@@ -69,13 +69,32 @@
       <!-- right section - form -->
       <div class="col-sm-4 m-auto" id="data">
         <h1>Sign Up</h1>
-        <h6 class="fw-normal">Wellcome! let’s start the journey</h6>
-        <form class="mt-4 d-inline-block">
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Full Name" />
+        <h6 class="fw-normal">Welcome! let’s start the journey</h6>
+        {%if alert == 1%}
+          <div class="alert alert-danger" role="alert">
+            Email Id and User already registered. For technical support please contact us
           </div>
+        {%else%}
+        {%if alert == 0%}
+          <div class="alert alert-success" role="alert">
+            Thank you for registering with us.
+          </div>
+          <a type = "btn" class = "btn btn-primary" href = "/user/login">Login</a>
+        {%endif%}
+        {% endif %}
+
+        {%if alert != 0%}
+
+        <form class="mt-4 d-inline-block" method = "post">
+          
+          {% csrf_token %}
+
           <div class="mb-3">
-            <input type="email" class="form-control" id="CustomerEmailId" placeholder="Email" />
+            <input type="text" class="form-control" placeholder="Full Name" name = "fname"/>
+          </div>
+          
+          <div class="mb-3">
+            <input type="email" class="form-control" id="CustomerEmailId" placeholder="Email" name = "email"/>
             <div class="invalid-feedback ms-3">
                 Invalid Email Id
             </div>
@@ -83,47 +102,51 @@
                 Looks good!
             </div>
           </div>
+          
           <div class="mb-3">
-            <input type="tel" class="form-control" id="CustomerPhNum" placeholder="Phone" />
+            <input type="tel" class="form-control" id="CustomerPhNum" placeholder="Phone" name = "pnumber"/>
             <div class="invalid-feedback ms-3">
               Invalid Phone Number
             </div>
             <div class="valid-feedback ms-3">
                 Looks good!
             </div>
-            </div>
-          <div class="mb-3">
-            <input
-              type="date"
-              class="form-control"
-              placeholder="Date of birth"
-            />
           </div>
+          
+          <div class="mb-3">
+            <input type="date" class="form-control" placeholder="Date of birth" name = "dob"/>
+          </div>
+          
           <div class="mb-3">
             <input
               type="password"
               class="form-control"
               placeholder="Password"
+              name = "password"
             />
           </div>
+          
           <div class="mb-3">
             <input
               type="password"
               class="form-control"
               placeholder="Confirm Password"
+              name = "cpassword"
             />
           </div>
-          <button
-            type="submit"
-            class="btn btn-primary d-block mt-4 mx-auto rounded-pill"
-          >
+          
+          <button type="submit" class="btn btn-primary d-block mt-4 mx-auto rounded-pill">
             Submit
           </button>
+
           <p class="fw-light mt-3 text-center">
             Already registered?
             <a href="/user/login" class="fw-normal text-decoration-none">Sign In</a>
           </p>
+
         </form>
+
+        {%endif%}
       </div>
     </div>
 

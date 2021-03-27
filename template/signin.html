@@ -41,6 +41,21 @@
           Hey, Welcome back! <br />
           Experience the best services with us.
         </h6>
+
+        {% if alert == 1 %}
+          <div class="alert alert-danger" role="alert">
+            Invalid Username or password
+          </div>
+        {%else%}
+        {%if alert == 0%}
+          <div class="alert alert-success" role="alert">
+            Login Successful. You can close this window and refresh the other page
+          </div>
+        {%endif%}
+        {% endif %}
+        
+        {%if alert != 0 %}
+
         <form class="mt-3 d-inline-block" method = "post">
         {% csrf_token %}
           <div class="mb-4">
@@ -55,6 +70,8 @@
             <a href="/user/signup" class="fw-normal text-decoration-none">Sign up</a>
           </p>
         </form>
+        {%endif%}
+
       </div>
     </div>
 
