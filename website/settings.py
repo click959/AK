@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['clicktovisit.herokuapp.com']
 
 INSTALLED_APPS = [
     'user.apps.UserConfig',
-    'django.contrib.admin',
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -129,4 +129,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [ os.path.join(BASE_DIR , "static"),]
 STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-ADMIN_ENABLED = False
