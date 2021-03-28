@@ -32,3 +32,6 @@ def contact(request):
 
 def error_404(request,exception):
     return render(request,'404.html')
+
+def error(request , exception):
+    return render(request , 'error.html')

@@ -24,3 +24,6 @@ urlpatterns = [
 ]
 
 handler404 = 'homepage.views.error_404'
+handler500 = 'homepage.views.error'
+handler403 = 'homepage.views.error'
+handler400 = 'homepage.views.error'
