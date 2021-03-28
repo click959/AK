@@ -74,11 +74,11 @@
                         
                         <ol class="carousel-indicators">
 
-                        {%for i in imgrange %}
-                            {% if i == 0%}
-                                <li data-bs-target="#imagecarousel" class = "active" data-bs-slide-to= {{ i | to_str }}></li>
+                        {%for i in img %}
+                            {% if forloop.counter == 1 %}
+                                <li data-bs-target="#imagecarousel" class = "active" data-bs-slide-to= {{ forloop.counter | to_str }}></li>
                             {%else%}  
-                                <li data-bs-target="#imagecarousel" data-bs-slide-to= {{ i | to_str }}></li>
+                                <li data-bs-target="#imagecarousel" data-bs-slide-to= {{ forloop.counter | to_str }}></li>
                             {%endif%}
                         {%endfor%}
                         </ol>
@@ -170,7 +170,7 @@
                             <p class = "h5 mx-auto my-auto px-1 py-1">Book Now</p>
                     </button>
                     <script>
-                        function openLogin(){window.open('/user/login');}
+                        function openLogin(){window.open('/user/login' , '_self');}
                     </script>
                     {%endif%}
                     </div>
