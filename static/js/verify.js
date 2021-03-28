@@ -1,14 +1,10 @@
-console.log('verificatoiin starts');
+let flagEmail = false, flagPhone = false;
 
 // Verify email
 const emailKEY = '79bc1a63cacf35cf76dc58fc3e07070e';
 let email = document.getElementById("CustomerEmailId");
-let flagEmail = false, flagPhone = false;
-
-console.log(flagEmail, flagPhone);
-
 email.addEventListener('blur', ()=> {
-    let email = document.getElementById("CustomerEmailId");
+    // let email = document.getElementById("CustomerEmailId");
     let emailId = email.value;
     const API = `https://apilayer.net/api/check?access_key=${emailKEY}&email=${emailId}`;
 
@@ -26,13 +22,15 @@ email.addEventListener('blur', ()=> {
                 email.classList.remove('is-invalid');
                 email.classList.add('is-valid');
                 flagEmail = true;
-                document.getElementById("submitBtn").disabled = false;
+                if (flagEmail && flagPhone)
+                    document.getElementById("submitBtn").disabled = false;
             }
             else {
                 email.classList.remove('is-valid');
                 email.classList.add('is-invalid');
                 flagEmail = false;
-                document.getElementById("submitBtn").disabled = true;
+                if (!flagEmail || !flagPhone)
+                    document.getElementById("submitBtn").disabled = true;  
             }
         }
     }
@@ -40,13 +38,11 @@ email.addEventListener('blur', ()=> {
     xhr.send();
 });
 
-
 // Verify Phone
 const phoneKEY = '869f4e2951d11d929ead4481e85dd95d';
 let phone = document.getElementById("CustomerPhNum");
-
 phone.addEventListener('blur', ()=> {
-    let phone = document.getElementById("CustomerPhNum");
+    // let phone = document.getElementById("CustomerPhNum");
     let phNumber = phone.value;
     const API = `http://apilayer.net/api/validate?access_key=${phoneKEY}&number=${phNumber}&country_code=IN`
 
@@ -62,27 +58,19 @@ phone.addEventListener('blur', ()=> {
             if (valid) {
                 phone.classList.remove('is-invalid');
                 phone.classList.add('is-valid');
-                flagEmail = true;
-                document.getElementById("submitBtn").disabled = false;
+                flagPhone = true;
+                if (flagEmail && flagPhone)
+                    document.getElementById("submitBtn").disabled = false;
             }
             else {
                 phone.classList.remove('is-valid');
                 phone.classList.add('is-invalid');
-                flagEmail = false;
-                document.getElementById("submitBtn").disabled = true;
+                flagPhone = false;
+                if (!flagEmail || !flagPhone)
+                    document.getElementById("submitBtn").disabled = true;  
             }
         }
     }
 
     xhr.send();
 });
-
-/* ASYNC-AWAIT
-
-console.log(flagEmail, flagPhone);
-
-if (flagEmail && flagPhone)
-    document.getElementById("submitBtn").disabled = false;
-else
-    document.getElementById("submitBtn").disabled = true;
-*/

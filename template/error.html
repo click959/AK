@@ -15,7 +15,7 @@
     />
 
     <link rel="stylesheet" href = "{%static 'css/home.css' %}">
-    <title>Error 404</title>
+    <title>Error</title>
   </head>
   <body>
     <div class="container-fluid" style="height: 0.7vmax"></div>
@@ -86,12 +86,14 @@
       </div>
     </nav>
 
-    <div class="container-fluid d-flex">
+    <div class="container-fluid d-flex flex-column">
       <img
-        src="{%static 'img/404.jpg' %%}"
-        alt="Error 404 - Page Not Found"
-        style="width: 43%; margin: auto"
+        src="{%static 'img/error.jpg' %%}"
+        alt="Some ERROR occured"
+        style="width: 33%; margin: auto"
       />
+      <h2 class="text-center m-auto">Oops! Something went wrong <br>
+      Please <a class="text-decoration-none" href="/contact">contact us</a> for any queries</h2>
     </div>
 
     <!-- footer -->
