@@ -99,24 +99,39 @@
           style="width: 100%"
         />
       </div>
+
+      {% if message == 1 %}
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5" style = "width: 10vmax !important; height: 10vmax !important;">
+        <div id="liveToast" class="toast hide bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+            <div class="toast-header bg-success text-white">
+            <strong class="me-auto">Admin</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Thank you for reaching out to us. We will reach out to you soon
+            </div>
+        </div>
+        </div>
+      {% endif %}
+
       <div class="container col-sm-9 mt-5">
         <div
           class="row container"
           id="right-container"
-          style="flex-direction: row"
-        >
+          style="flex-direction: row" >
+
+
           <!-- reach out to us by dropping a message -->
-          <div
-            class="card col-sm-7 mb-5 border-0"
-            style="background: transparent"
-          >
-            <form class="mx-auto d-flex flex-column">
+          <div class="card col-sm-7 mb-5 border-0" style="background: transparent" >
+            <form class="mx-auto d-flex flex-column" method = "post">
+            {% csrf_token %}
               <div class="mb-1">
                 <input
                   type="text"
                   id="name"
                   class="form-control rounded-1 mb-4"
                   placeholder="Your Name"
+                  name = "name"
                   required
                 />
               </div>
@@ -126,6 +141,7 @@
                   id="CustomerEmailId"
                   class="form-control rounded-1"
                   placeholder="Your email id"
+                  name = "email"
                   required
                 />
                 <div class="invalid-feedback ms-3">Invalid Email Id</div>
@@ -137,6 +153,7 @@
                   id="CustomerPhNum"
                   class="form-control rounded-1"
                   placeholder="Your phone number"
+                  name = "phone"
                   required
                 />
                 <div class="invalid-feedback ms-3">Invalid Phone Number</div>
@@ -148,6 +165,7 @@
                   placeholder="Leave a message here"
                   id="messag3"
                   style="height: 100px"
+                  name = "message"
                   required
                 ></textarea>
               </div>
@@ -161,6 +179,8 @@
               </button>
             </form>
           </div>
+          
+
 
           <!-- contact us directly on call or drop an email -->
           <div
@@ -212,6 +232,7 @@
       </div>
     </div>
 
+ 
     <!-- Footer -->
     <div class="mt-5 pt-5 pb-5 footer" id="footer">
       <div class="container">
@@ -274,5 +295,14 @@
     ></script>
 
     <script src="{%static 'js/verify.js'%}"></script>
+    {%if message == 1%}
+        <script>
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function(toastEl) {
+            return new bootstrap.Toast(toastEl)
+        });
+        toastList.forEach(toast => toast.show()); 
+        </script>
+    {%endif%}
   </body>
 </html>
