@@ -13,7 +13,6 @@ def signupUser(request):
         pnumber = request.POST['pnumber']
         dob = request.POST['dob']
         password = request.POST['password']
-        print(email)
         username = hashlib.sha512(email.encode()).hexdigest()
         try:
             User.objects.get(username=username)
