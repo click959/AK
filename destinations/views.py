@@ -1,5 +1,6 @@
 from django.shortcuts import render , HttpResponse
 from destinations import mongodbconn
+from destinations import mongodb2conn
 
 s = """All the cotent of the room and about the room 
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
@@ -16,7 +17,6 @@ s = """All the cotent of the room and about the room
                                 consequat. Duis aute irure dolor in reprehenderit in voluptate"""
 full_des = {
     "id" : "20200325et122631",
-    "imgrange" : range(4),
     "img" : [{"url" : "img/landing.jpg" , "label" : "First slide label" , "comment" : "Nulla vitae elit libero, a pharetra augue mollis interdum."} , {"url" : "img/landing.jpg" , "label" : "Second slide label" , "comment" : "Praesent commodo cursus magna, vel scelerisque nisl consectetur."},{"url" : "img/landing.jpg" , "label" : "Third slide label" , "comment" : "Nulla vitae elit libero, a pharetra augue mollis interdum."},{"url" : "img/landing.jpg" , "label" : "Fourth slide label" , "comment" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}],
     "Name" : "Destination Name",
     "rating" : [1,1,1,1,0],
@@ -35,6 +35,9 @@ def destinations(request):
 
 def destination(request , id = 0):
     #\d{8}\w[et]\d{6}
+    full_des = mongodb2conn.fetch_one(id)
+    if(full_des == None):
+        return HttpResponse("No page such found")
     context = full_des
     response = render(request , 'destination_template.html' , context) 
     response.set_cookie(key="lastdestinationvisit" , value= full_des['id'] , httponly=True)
