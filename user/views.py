@@ -2,6 +2,7 @@ from django.shortcuts import render , HttpResponse , redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login , logout
 from user.models import Profile
+from cart.models import order
 import hashlib
 
 # Create your views here.
@@ -35,7 +36,7 @@ def loginUser(request):
         value = request.COOKIES.get('lastdestinationvisit')
         urltoredirect += value
     except:
-        print("Error")
+        urltoredirect = "/destination"
 
     if request.user.is_authenticated:
         return render(request , "signin.html" , {"alert" : 0 , "reurl" : urltoredirect})
@@ -60,3 +61,14 @@ def logoutUser(request):
         return HttpResponse("okay")
     else:
         return render(request , 'signin.html') 
+
+def gettrips(request):
+    if request.user.is_authenticated:
+        username = request.user
+        trips = order.objects.all().filter(PaidStatus=True , user= username).order_by('fromdate').reverse()
+        if trips.count() == 0:
+            return HttpResponse(request , 'trips.html' , {"count" : 0})
+        else:
+            return HttpResponse("trips")
+    else:
+        return render(request , 'signin.html')

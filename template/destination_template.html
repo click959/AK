@@ -43,11 +43,10 @@
                             <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/{{ user.get_username }}"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a>
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg" style="background-color: #22f1f7;">
-                            <a class="nav-link rounded-pill text-white" aria-current="page" target="_blank">My Trips</a> 
-                            <!--HREF needed to be added-->
+                            <a class="nav-link rounded-pill text-white" aria-current="page" target="_blank" href = "/user/trip">My Trips</a> 
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg" style="background-color: #d9534f !important;">
-                            <a class="nav-link rounded-pill text-white" aria-current="page" href="/user/logout">Signout</a>
+                            <a class="nav-link rounded-pill text-white" aria-current="page" href= "/user/logout">Signout</a>
                         </li>
                         {%else%}
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 button_hover_color_outer rounded-pill">

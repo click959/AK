@@ -16,3 +16,8 @@ class order(models.Model):
     PaidStatus = models.BooleanField()
     TransactionID = models.CharField(max_length=100)
     DatePaid = models.DateTimeField()
+
+#orderId : od20210329t120731
+#HotelId : 20210329et120731
+#RoomId : not decided yet right now using "type1" , "type2" .....
+#For how to handle user field view User app
