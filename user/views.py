@@ -67,7 +67,7 @@ def gettrips(request):
         username = request.user
         trips = order.objects.all().filter(PaidStatus=True , user= username).order_by('FromDate').reverse()
         if trips.count() == 0:
-            return HttpResponse(request , 'trips.html' , {"count" : 0})
+            return render(request , 'trips.html' , {"count" : 0})
         else:
             return HttpResponse("trips")
     else:
