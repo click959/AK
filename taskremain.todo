@@ -3,12 +3,12 @@ logout page:
     ☐ read cookie and back to destination page
 
 error 404 page:
-    ☐ design page
-    ☐ configure setting to display ther page
+    ✔ design page @done (3/29/2021, 12:20:55 AM)
+    ✔ configure setting to display ther page @done (3/29/2021, 12:20:53 AM)
 
 general error page:
-    ☐ design page
-    ☐ configure setting to display change
+    ✔ design page @done (3/29/2021, 12:20:40 AM)
+    ✔ configure setting to display change @done (3/29/2021, 12:20:43 AM)
 
 cart:
     ☐ design cart
