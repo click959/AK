@@ -40,7 +40,8 @@
                         
                         {% if user.is_authenticated %}
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 button_hover_color_outer rounded-pill">
-                            <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/{{ user.get_username }}"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a>
+                            <!-- <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/{{ user.get_username }}"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a> -->
+                            <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/mycart"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a>
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg" style="background-color: #22f1f7;">
                             <a class="nav-link rounded-pill text-white" aria-current="page" target="_blank" href = "/user/trip">My Trips</a> 
@@ -217,7 +218,7 @@
 
                                     <div class = "mt-4">
                                     <h5>Number of People</h5>
-                                    <input type="Number" class="form-control" placeholder="Number of People" min = "1" required>
+                                    <input type="Number" class="form-control" id="numP{{room.id}}" placeholder="Number of People" min = "1" required>
                                     <div class="invalid-feedback">
                                         Please check once 
                                     </div>
@@ -225,7 +226,7 @@
 
                                     <div class = "mt-4">
                                     <h5>Number of Rooms</h5>
-                                    <input type="Number" class="form-control" placeholder="Number of Rooms" min = "1" max = {{room.avail}} required>
+                                    <input type="Number" class="form-control" id="numR{{room.id}}" placeholder="Number of Rooms" min = "1" max = {{room.avail}} required>
                                     <div class="invalid-feedback">
                                         Number of Rooms and Total People do not match
                                     </div>
@@ -233,7 +234,7 @@
 
                                     <div class = "mt-4">
                                     <h5>From: </h5>
-                                    <input type="date" class="form-control" placeholder="FromDate" required>
+                                    <input type="date" class="form-control" id="fromD{{room.id}}" placeholder="FromDate" required>
                                     <div class="invalid-feedback">
                                         Not Availabel on selected date
                                     </div>
@@ -241,7 +242,7 @@
 
                                     <div class = "mt-4">
                                     <h5>To: </h5>
-                                    <input type="date" class="form-control" placeholder="ToDate" required>
+                                    <input type="date" class="form-control" id="toD{{room.id}}" placeholder="ToDate" required>
                                     <div class="invalid-feedback">
                                         Not Available on selected date
                                     </div>
@@ -249,7 +250,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                    <button type="submit" class="btn btn-success" name = "action" value="cart">Add to Cart</button>
+                                    <button type="submit" class="btn btn-success" id="c{{room.id}}" name = "action" value="cart" onclick="cid=this.id; AddToCart()">Add to Cart</button>
                                 </div>
                             </form>
                             {%endif%}
@@ -295,4 +296,6 @@
           </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = "{%static 'js/destination_tem.js'%}"></script>
 </html>
