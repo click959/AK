@@ -58,9 +58,9 @@ def loginUser(request):
 def logoutUser(request):
     if request.user.is_authenticated:
         logout(request)
-        return HttpResponse("okay")
+        return render(request , 'signout-thankyou.html')
     else:
-        return render(request , 'signin.html') 
+        return redirect('/user/login')
 
 def gettrips(request):
     if request.user.is_authenticated:
