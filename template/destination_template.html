@@ -40,8 +40,8 @@
                         
                         {% if user.is_authenticated %}
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 button_hover_color_outer rounded-pill">
-                            <!-- <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/{{ user.get_username }}"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a> -->
-                            <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/mycart"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a>
+                            <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/{{ user.get_username }}"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a>
+                            <!-- <a class="nav-link button_hover_color rounded-pill" aria-current="page" href="/cart/mycart"><i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i></a> -->
                         </li>
                         <li class="nav-item ms-lg-3 me-lg-3 px-4 rounded-pill shadow-lg" style="background-color: #22f1f7;">
                             <a class="nav-link rounded-pill text-white" aria-current="page" target="_blank" href = "/user/trip">My Trips</a> 
@@ -159,7 +159,7 @@
                     <div class = "col-lg-9 col-md-8 col-sm-10 me-0">
                     <div class = "row room-name ms-3">
                         <div class = "col-9 h2">{{room.RoomType}}</div>
-                        <div class = "col-3 mt-2 pt-1 h5">{{room.cost}} per person per day</div>
+                        <div class = "col-3 mt-2 pt-1 h5"><span id="price{{ room.id }}">{{room.cost}}</span> per person per day</div>
                     </div>  
                     </div>
 
@@ -206,7 +206,7 @@
                                 <h5 class="modal-title" id="staticBackdropLabel">Select Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            
+
                             {%if user.is_authenticated%}
                             <form class = "mt-2 needs-validation" method = "post">
                                 {% csrf_token %}
@@ -247,10 +247,14 @@
                                         Not Available on selected date
                                     </div>
                                     </div>
+
+                                    <!-- hidden fields just to send data -->
+                                    <input type="hidden" id="h{{room.id}}" value="{{id}}">
+                                    <input type="hidden" id="r{{room.id}}" value="{{room.id}}">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                    <button type="submit" class="btn btn-success" id="c{{room.id}}" name = "action" value="cart" onclick="cid=this.id; AddToCart()">Add to Cart</button>
+                                    <button type="submit" class="btn btn-success" id="{{room.id}}" name = "action" value="cart" onclick="cid=this.id; priceid=`price{{ room.id }}`; AddToCart()">Add to Cart</button>
                                 </div>
                             </form>
                             {%endif%}
@@ -297,5 +301,5 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src = "{%static 'js/destination_tem.js'%}"></script>
+    <script src = "{%static 'js/destination_tem.js' %}"></script>
 </html>
