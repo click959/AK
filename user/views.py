@@ -42,7 +42,6 @@ def loginUser(request):
         return render(request , "signin.html" , {"alert" : 0 , "reurl" : urltoredirect})
 
     if request.method == 'POST':
-        print(urltoredirect)
         email = request.POST['email']
         password = request.POST['password']
         email = email.lower()
@@ -58,9 +57,9 @@ def loginUser(request):
 def logoutUser(request):
     if request.user.is_authenticated:
         logout(request)
-        return HttpResponse("okay")
+        return render(request , 'signout-thankyou.html')
     else:
-        return render(request , 'signin.html') 
+        return redirect('/user/login')
 
 def gettrips(request):
     if request.user.is_authenticated:
