@@ -1,15 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from cart.models import order
 from datetime import date, datetime
+from cart.models import order
+from destinations import mongodb2conn
 
 # Create your views here.
 def AddToCart(request):
     if request.method == 'POST':
+        hotelId = request.POST['hotelId']
+        roomId = request.POST['roomId']
         numberOfPeople = request.POST['numberOfPeople']
         numberOfRoom = request.POST['numberOfRoom']
         fromDate = request.POST['fromDate']
         toDate = request.POST['toDate']
+        cost = request.POST['cost']
+
+        print(hotelId, '********************')
 
         # calculating number of days
         fdate = fromDate.split('-')
@@ -20,27 +26,32 @@ def AddToCart(request):
 
         # loading current date time for generating below id's
         curDateTime = datetime.now()
-
         # Order Id > FORMAT: od20210329t120731
         orderId = 'od' + curDateTime.strftime("%x").replace('/', '') + 't' + curDateTime.strftime("%X").replace(':', '')
-        # Hotel Id > FORMAT: 20210329et120731
-        hotelId = curDateTime.strftime("%x").replace('/', '') + 'et' + curDateTime.strftime("%X").replace(':', '')
+
+        # calculating total cost
+        totalCost = int(cost) * int(numberOfDays) * int(numberOfPeople)
 
         # getting user
         username = request.user
 
-        # Cost : 700 > from db
         # DatePaid : fromDate > from the bank
-        # roomId : 101 > ot be decided
         # PaidStatus : False > True after successful payment
         # TransactionID : 'xxx' > from the bank
         
-        myOrder = order(user=username, HotelId=hotelId,  roomId="101", orderId=orderId, NumberOfPeople=numberOfPeople, NumberOfRooms=numberOfRoom, FromDate=fromDate, ToDate=toDate, NumberOfDays=numberOfDays, Cost=700, PaidStatus=False, TransactionID="xxx", DatePaid=fromDate)
+        myOrder = order(user=username, HotelId=hotelId,  roomId=roomId, orderId=orderId, NumberOfPeople=numberOfPeople, NumberOfRooms=numberOfRoom, FromDate=fromDate, ToDate=toDate, NumberOfDays=numberOfDays, Cost=totalCost, PaidStatus=False, TransactionID="xxx", DatePaid=fromDate)
 
         myOrder.save()
 
         return HttpResponse('')
 
 
-def MyCart(request):
-    return render(request, 'cart.html')
+def MyCart(request, id = 0):
+    if request.user.is_authenticated:
+        orderDetails = order.objects.all().filter(PaidStatus=False, user = request.user)
+        if orderDetails.count() == 0:
+            return render(request, 'cart.html', {"data": 0})
+        else:
+            return render(request, 'cart.html', {"orderDetails": orderDetails})
+    else:
+        return render(request , 'signin.html')

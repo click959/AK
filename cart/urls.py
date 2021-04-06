@@ -6,5 +6,5 @@ from django.http import HttpResponse
 
 urlpatterns = [
     path('addtocart/', views.AddToCart),
-    path('mycart/', views.MyCart),
+    path('<str:id>', views.MyCart),
 ]
