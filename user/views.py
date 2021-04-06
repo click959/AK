@@ -42,7 +42,6 @@ def loginUser(request):
         return render(request , "signin.html" , {"alert" : 0 , "reurl" : urltoredirect})
 
     if request.method == 'POST':
-        print(urltoredirect)
         email = request.POST['email']
         password = request.POST['password']
         email = email.lower()
