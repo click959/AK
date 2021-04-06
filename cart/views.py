@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from cart.models import order
 from datetime import date, datetime
+from cart.models import order
+from destinations import mongodb2conn
 
 # Create your views here.
 def AddToCart(request):
@@ -13,6 +14,8 @@ def AddToCart(request):
         fromDate = request.POST['fromDate']
         toDate = request.POST['toDate']
         cost = request.POST['cost']
+
+        print(hotelId, '********************')
 
         # calculating number of days
         fdate = fromDate.split('-')
@@ -47,7 +50,7 @@ def MyCart(request, id = 0):
     if request.user.is_authenticated:
         orderDetails = order.objects.all().filter(PaidStatus=False, user = request.user)
         if orderDetails.count() == 0:
-            return HttpResponse('order do not exists')
+            return render(request, 'cart.html', {"data": 0})
         else:
             return render(request, 'cart.html', {"orderDetails": orderDetails})
     else:

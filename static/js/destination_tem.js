@@ -16,26 +16,39 @@ $(document).on('submit', id, function(e){
     hotelId = e.target[5].id;
     roomId = e.target[6].id;
 
-    $.ajax({
-        type: 'POST',
-        url: '/cart/addtocart/',
-        data: {
-            numberOfPeople: document.getElementById(numPeople).value,
-            numberOfRoom: document.getElementById(numRoom).value,
-            fromDate: document.getElementById(fromDate).value,
-            toDate: document.getElementById(toDate).value,
-            hotelId: document.getElementById(hotelId).value,
-            roomId: document.getElementById(roomId).value,
-            cost: document.getElementById(priceId).innerText,
-            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-        },
-        success: function () {
-            alert("Item added to cart");
-            
-            document.getElementById(numPeople).value = '';
-            document.getElementById(numRoom).value = '';
-            document.getElementById(fromDate).value = '';
-            document.getElementById(toDate).value = '';
-        }
-    })
+    numOfPeople = document.getElementById(numPeople).value;
+    numOfRoom = document.getElementById(numRoom).value;
+    fDate = document.getElementById(fromDate).value;
+    tDate = document.getElementById(toDate).value;
+
+    if (numOfPeople < numOfRoom && fDate < tDate) {
+        alert('Number of rooms sohuld be less than or equal to number of peoples');
+    } else if ((numOfPeople >= numOfRoom && fDate > tDate)){
+        alert('to date should be after the from date');
+    } else if ((numOfPeople < numOfRoom && fDate > tDate)) {
+        alert('upar ke dono chutiye hain');
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: '/cart/addtocart/',
+            data: {
+                numberOfPeople: numOfPeople,
+                numberOfRoom: numOfRoom,
+                fromDate: fDate,
+                toDate: tDate,
+                hotelId: document.getElementById(hotelId).value,
+                roomId: document.getElementById(roomId).value,
+                cost: document.getElementById(priceId).innerText,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function () {
+                alert("Item added to cart");
+                
+                document.getElementById(numPeople).value = '';
+                document.getElementById(numRoom).value = '';
+                document.getElementById(fromDate).value = '';
+                document.getElementById(toDate).value = '';
+            }
+        })
+    }
 });

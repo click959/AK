@@ -57,6 +57,15 @@
           width: 100% !important;
           margin-top: .7rem;
         }
+        .btn-close {
+          margin-right: 0rem !important;
+        }
+        #emptycartlogo {
+          width: 77% !important;
+        }
+        #emptycartbtn {
+          width: 40% !important;
+        }
       }
       @media screen and (max-width: 500px) {
         #m-view-flex {
@@ -142,11 +151,21 @@
     <!-- main body -->
     <div class="container-fluid">
       <h2 class="ms-5 mt-4" id="heading">Your Cart</h2>
-      
+
+      <div class="container-fluid" style="height: 0.7vmax"></div>
+
+      {% if data == 0 %}
+      <div class="container d-flex align-items-center flex-column">
+        <img class="my-5" id="emptycartlogo" src="../static/img/cart-empty.png" alt="Empty cart" style="width: 35%;">
+        <h1 class="text-center">Your cart is empty</h1>
+        <button class="btn btn-primary mt-3" id="emptycartbtn" style="width: 15%">Book Now</button>
+      </div>
+      {% else %}
       {% for data in orderDetails %}
       <div>
         <div class="container mt-5 me-5">
-          <h2 style="color:#000000ad">Destination Name X</h2>
+          <h2 class="d-inline" style="color:#000000ad">Destination Name X</h2>
+          <button type="button" class="btn-close" aria-label="Close" style="float: right; margin-right: 5rem;"></button>
           <h5>Address of the destination</h5>
         </div>
         <div class="container d-flex mt-3 me-5" id="main-body">
@@ -237,7 +256,7 @@
         </div>
       </div>
       {% endfor %}
-
+      {% endif %}
     </div>
 
     <div class="container-fluid" style="height: 5vmax;"></div>
