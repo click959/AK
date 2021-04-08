@@ -1,5 +1,3 @@
-console.log('cart js');
-
 function DeleteOrder() {
     let confirmation = prompt("You are about to delete the booking. \n Type 'yes' to confirm");
     if (confirmation.toLowerCase() == 'yes') {
