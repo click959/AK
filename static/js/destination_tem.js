@@ -1,10 +1,10 @@
 // addToCart
-console.log('ajax - django - ADD TO CART');
 
-let id, priceId;
+let id, priceId, roomType;
 function AddToCart() {
     id = cid;
     priceId = priceid;
+    roomType = roomtype;
 }
 $(document).on('submit', id, function(e){
     e.preventDefault();
@@ -21,13 +21,23 @@ $(document).on('submit', id, function(e){
     fDate = document.getElementById(fromDate).value;
     tDate = document.getElementById(toDate).value;
 
-    if (numOfPeople < numOfRoom && fDate < tDate) {
-        alert('Number of rooms sohuld be less than or equal to number of peoples');
-    } else if ((numOfPeople >= numOfRoom && fDate > tDate)){
+    if (numOfPeople < numOfRoom) {
+        alert(numOfPeople);
+        alert(numOfRoom);
+        let confiramtion = prompt("You've selected too many rooms that might not be required! \n Type 'yes' to continue.");
+        if (confiramtion == 'yes' )
+            AjaxCall();
+        else {
+            document.getElementById(numPeople).value = '';
+            document.getElementById(numRoom).value = '';
+        }
+    } else if (fDate > tDate){
         alert('to date should be after the from date');
-    } else if ((numOfPeople < numOfRoom && fDate > tDate)) {
-        alert('upar ke dono chutiye hain');
     } else {
+        AjaxCall();
+    }
+
+    function AjaxCall() {
         $.ajax({
             type: 'POST',
             url: '/cart/addtocart/',
@@ -39,6 +49,7 @@ $(document).on('submit', id, function(e){
                 hotelId: document.getElementById(hotelId).value,
                 roomId: document.getElementById(roomId).value,
                 cost: document.getElementById(priceId).innerText,
+                roomType: document.getElementById(roomType).innerText,
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
             },
             success: function () {
@@ -52,3 +63,15 @@ $(document).on('submit', id, function(e){
         })
     }
 });
+
+// send hotel ID to views.py
+window.onload = function() {
+    $.ajax({
+        type: 'POST',
+        url: '/cart/gethotel/',
+        data: {
+            hotelId: document.getElementById("HotelID").value,
+            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+        },
+    });
+}

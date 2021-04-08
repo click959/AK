@@ -18,6 +18,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href = "{%static 'css/home.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <title>Your Cart</title>
     <style>
@@ -162,11 +164,12 @@
       </div>
       {% else %}
       {% for data in orderDetails %}
-      <div>
+      {% csrf_token %}
+      <div id="{{forloop.counter}}">
         <div class="container mt-5 me-5">
-          <h2 class="d-inline" style="color:#000000ad">Destination Name X</h2>
-          <button type="button" class="btn-close" aria-label="Close" style="float: right; margin-right: 5rem;"></button>
-          <h5>Address of the destination</h5>
+          <h2 class="d-inline" style="color:#000000ad">{{full_des.Name}}</h2>
+          <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="bottom" title="delete booking" style="float: right; margin-right: 5rem;" onclick="elementId=`{{forloop.counter}}`; orderID=`{{data.orderId}}`; DeleteOrder()"></button>
+          <h5>{{full_des.location}}</h5>
         </div>
         <div class="container d-flex mt-3 me-5" id="main-body">
           <div class="col-5">
@@ -178,7 +181,19 @@
             />
           </div>
           <div class="col-7 ms-2">
-            <div class="row mt-3 mobile-view" id="m-view-flex">
+            <div class="row mt-1 mobile-view">
+              <div class="col-12 mobile-view m-view-left-pad">
+                <div
+                  class="d-flex"
+                  style="height: 100%"
+                >
+                  <p class="fs-5">STAY TYPE</p>
+                  <h3 class="ms-5">{{data.RoomType}}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4 mobile-view" id="m-view-flex">
               <div class="col-4 mobile-view m-view-left-pad">
                 <div
                   class="d-flex flex-column justify-content-center"
@@ -211,7 +226,7 @@
               </div>
             </div>
 
-            <div class="row my-5 mobile-view">
+            <div class="row my-4 mobile-view">
               <div class="col-3 mobile-view m-view-left-pad">
                 <div class="border-end" style="height: 100%">
                   {% if data.NumberOfPeople > 1 %}
@@ -306,7 +321,7 @@
     
 
     <!-- Optional JavaScript; choose one of the two! -->
-
+    <script src = "{%static 'js/cart.js' %}"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"

@@ -12,6 +12,9 @@
         <link rel="icon" href="{% static 'img/logo.jpg' %}">
         <link rel="stylesheet" href= "{%static 'css/icons/css/font-awesome.min.css'%}">
         <link rel= "stylesheet" href = "{%static 'css/destination_template.css' %}">
+
+        <!-- import jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
 
@@ -157,7 +160,7 @@
                 <div class = "row mx-auto mb-5 mt-5">
                     <div class = "col-lg-9 col-md-8 col-sm-10 me-0">
                     <div class = "row room-name ms-3">
-                        <div class = "col-9 h2">{{room.RoomType}}</div>
+                        <div class = "col-9 h2" id="type{{ room.id }}">{{room.RoomType}}</div>
                         <div class = "col-3 mt-2 pt-1 h5"><span id="price{{ room.id }}">{{room.cost}}</span> per person per day</div>
                     </div>  
                     </div>
@@ -198,6 +201,7 @@
                     </div>
                 </div>
 
+                <!-- Add to CART wala modal -->
                 <div class="modal fade" id= {{ room.id | combine_str_id:"" }} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
@@ -253,7 +257,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Back</button>
-                                    <button type="submit" class="btn btn-success" id="{{room.id}}" name = "action" value="cart" onclick="cid=this.id; priceid=`price{{ room.id }}`; AddToCart()">Add to Cart</button>
+                                    <button type="submit" class="btn btn-success" id="{{room.id}}" name = "action" value="cart" onclick="cid=this.id; priceid=`price{{ room.id }}`; roomtype=`type{{ room.id }}`; AddToCart()">Add to Cart</button>
                                 </div>
                             </form>
                             {%endif%}
@@ -263,7 +267,10 @@
 
             {%endfor%}
         </div>
-
+        <!-- Hotel ID -->
+        <input type="hidden" value="{{id}}" id="HotelID">
+        
+        <!-- footer -->
         <div class="mt-5 pt-5 pb-5 footer" id = "footer">
             <div class="container">
               <div class="row">
@@ -299,6 +306,5 @@
           </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src = "{%static 'js/destination_tem.js' %}"></script>
 </html>

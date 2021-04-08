@@ -1,5 +1,3 @@
-console.log("Integrating Maps with Mapbox API");
-
 // Unique Access Token for the MapBox API
 mapboxgl.accessToken = `
 pk.eyJ1IjoiY2xpY2t0b3Zpc2l0IiwiYSI6ImNrbG5naHhoMDA5MTQyb280djRiM2Z5ZWkifQ.UieuV8QgIkQL3-Fr2TGPuA`;
@@ -9,9 +7,7 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
 });
 
 // if user gives the permission to track the user's current location, use it
-function successLocation(position) {
-  console.log(position);
-  setUpMap([position.coords.longitude, position.coords.latitude]);
+function successLocation(position) { setUpMap([position.coords.longitude, position.coords.latitude]);
 }
 // if no geolocation is found by default from the user, provide a default location of howrah
 function errorLocation() {

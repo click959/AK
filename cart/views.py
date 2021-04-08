@@ -14,8 +14,7 @@ def AddToCart(request):
         fromDate = request.POST['fromDate']
         toDate = request.POST['toDate']
         cost = request.POST['cost']
-
-        print(hotelId, '********************')
+        roomType = request.POST['roomType']
 
         # calculating number of days
         fdate = fromDate.split('-')
@@ -39,19 +38,42 @@ def AddToCart(request):
         # PaidStatus : False > True after successful payment
         # TransactionID : 'xxx' > from the bank
         
-        myOrder = order(user=username, HotelId=hotelId,  roomId=roomId, orderId=orderId, NumberOfPeople=numberOfPeople, NumberOfRooms=numberOfRoom, FromDate=fromDate, ToDate=toDate, NumberOfDays=numberOfDays, Cost=totalCost, PaidStatus=False, TransactionID="xxx", DatePaid=fromDate)
+        myOrder = order(user=username, HotelId=hotelId,  roomId=roomId, orderId=orderId, NumberOfPeople=numberOfPeople, NumberOfRooms=numberOfRoom, FromDate=fromDate, ToDate=toDate, NumberOfDays=numberOfDays, Cost=totalCost, PaidStatus=False, TransactionID="xxx", DatePaid=fromDate, RoomType=roomType)
 
         myOrder.save()
 
         return HttpResponse('')
 
 
+# handling cart
+def getHotel(request):
+    global hotelID
+    hotelID = request.POST['hotelId']
+    return HttpResponse('')
+
 def MyCart(request, id = 0):
     if request.user.is_authenticated:
+        full_des = mongodb2conn.fetch_one(hotelID)
         orderDetails = order.objects.all().filter(PaidStatus=False, user = request.user)
+
+        context = {
+            "orderDetails": orderDetails,
+            "full_des": full_des
+        }
         if orderDetails.count() == 0:
             return render(request, 'cart.html', {"data": 0})
         else:
-            return render(request, 'cart.html', {"orderDetails": orderDetails})
+            return render(request, 'cart.html', context)
+            # return render(request, 'cart.html', {"orderDetails": orderDetails})
     else:
         return render(request , 'signin.html')
+
+# delete Order from cart
+def DeleteBooking(request):
+    if request.method == 'POST':
+        OrderId = request.POST['OrderId']
+        orderDetails = order.objects.all().filter(PaidStatus=False, orderId = OrderId)
+        orderDetails.delete()
+
+        return HttpResponse('')
+        

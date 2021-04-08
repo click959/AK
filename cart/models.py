@@ -6,6 +6,7 @@ class order(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE)
     HotelId = models.CharField(max_length =16)
     roomId = models.CharField(max_length = 18)
+    RoomType = models.CharField(max_length = 18)
     orderId = models.CharField(max_length=17)   # generate
     NumberOfPeople = models.IntegerField()
     NumberOfRooms = models.IntegerField()
