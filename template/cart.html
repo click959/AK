@@ -158,9 +158,11 @@
 
       {% if data == 0 %}
       <div class="container d-flex align-items-center flex-column">
-        <img class="my-5" id="emptycartlogo" src="../static/img/cart-empty.png" alt="Empty cart" style="width: 35%;">
+        <!-- <img class="my-5" id="emptycartlogo" src="../static/img/cart-empty.png" alt="Empty cart" style="width: 35%;"> -->
+        <img class="my-5" id="emptycartlogo" src="{%static 'img/cart-empty.png' %}" alt="Empty cart" style="width: 35%;">
         <h1 class="text-center">Your cart is empty</h1>
-        <button class="btn btn-primary mt-3" id="emptycartbtn" style="width: 15%">Book Now</button>
+        <button class="btn btn-primary mt-3"  id="emptycartbtn" style="width: 15%">
+          <a href="/destination" class="text-white text-decoration-none">Book Now</a></button>
       </div>
       {% else %}
       {% for data in orderDetails %}
