@@ -21,6 +21,7 @@ urlpatterns = [
     path('destination/' , include('destinations.urls')),
     path('', include('homepage.urls')),
     path('user/' , include('user.urls')),
+    path('cart/' , include('cart.urls')),
 ]
 
 handler404 = 'homepage.views.error_404'
