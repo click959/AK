@@ -44,7 +44,7 @@ def AddToCart(request):
 
         return HttpResponse('')
 
-hotelID = None
+
 # handling cart
 def getHotel(request):
     global hotelID
