@@ -274,7 +274,26 @@
       {% endfor %}
       {% endif %}
     </div>
-
+    <!-- Handle cart item Deletion -->
+    <script>
+      function DeleteOrder() {
+        let confirmation = prompt("You are about to delete the booking. \n Type 'yes' to confirm");
+        if (confirmation.toLowerCase() == 'yes') {
+            document.getElementById(elementId).remove();
+            $.ajax({
+                type: 'POST',
+                url: '/cart/deletebooking/',
+                data: {
+                    OrderId: orderID,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                
+                success: ()=> alert('Booking deleted!')
+            })
+        }
+      }
+    </script>
+    
     <div class="container-fluid" style="height: 5vmax;"></div>
 
     <!-- footer -->
@@ -322,7 +341,7 @@
     
 
     <!-- Optional JavaScript; choose one of the two! -->
-    <script src = "{%static 'js/cart.js' %}"></script>
+
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
