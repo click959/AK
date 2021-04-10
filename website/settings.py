@@ -27,7 +27,7 @@ SECRET_KEY = 'c4t3=oa154-(779x$q)kh485%(#1br8r$usgmdj2gg$dmt)pae'
 DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = ['clicktovisit.herokuapp.com']
+ALLOWED_HOSTS = ['clicktovisitprod.herokuapp.com']
 # ALLOWED_HOSTS = ['*']
 
 # Application definition
