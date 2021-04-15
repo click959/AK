@@ -21,9 +21,10 @@ $(document).on('submit', id, function(e){
     fDate = document.getElementById(fromDate).value;
     tDate = document.getElementById(toDate).value;
 
+    numOfPeople = parseInt(numOfPeople, 10);
+    numOfRoom = parseInt(numOfRoom, 10);
+
     if (numOfPeople < numOfRoom) {
-        alert(numOfPeople);
-        alert(numOfRoom);
         let confiramtion = prompt("You've selected too many rooms that might not be required! \n Type 'yes' to continue.");
         if (confiramtion == 'yes' )
             AjaxCall();
