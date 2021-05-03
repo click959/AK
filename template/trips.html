@@ -169,8 +169,85 @@
       
       {% else %}
             {% for data in trips %}
-                trips Id
-                <p>{{ data  }}</p>
+
+              <div class="container d-flex mt-3 me-5" id="main-body">
+                <div class="col-5">
+                  <img src="{% static 'img/destination.jpg' %}" alt="destination Image" style="width: 85%" id="destImage" />  
+                </div>
+                
+                <div class="col-7 ms-2">
+                  
+                  <div class="row mt-1 mobile-view">
+                    <div class="col-12 mobile-view m-view-left-pad">
+                      <div class="d-flex" style="height: 100%">
+                        <p class="fs-5">STAY TYPE</p>
+                        <h3 class="ms-5">{{data.RoomType}}</h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-4 mobile-view" id="m-view-flex">
+                    
+                    <div class="col-4 mobile-view m-view-left-pad">
+                      <div class="d-flex flex-column justify-content-center" style="height: 100%">
+                        <p>CHECK IN</p>
+                        <h3>{{ data.FromDate }}</h3>
+                      </div>
+                    </div>
+                    
+                    <div class="col-3 mobile-view m-view-compact">
+                      <div class="d-flex flex-column justify-content-center" style="height: 100%">
+                        {% if data.NumberOfDays > 1 %}
+                          <p class="border px-2" style="width: max-content"> {{ data.NumberOfDays }} NIGHTS</p>
+                        {% else %}
+                          <p class="border px-2" style="width: max-content"> {{ data.NumberOfDays }} NIGHT</p>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="col-5 mobile-view m-view-compact">
+                      <div class="d-flex flex-column justify-content-center" style="height: 100%">
+                        <p>CHECK OUT</p>
+                        <h3>{{ data.ToDate}}</h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row my-4 mobile-view">
+                    
+                    <div class="col-3 mobile-view m-view-left-pad">
+                      <div class="border-end" style="height: 100%">
+                        {% if data.NumberOfPeople > 1 %}
+                        <h5><b>{{data.NumberOfPeople}}</b> Guests</h5>
+                        {% else %}
+                        <h5><b>{{data.NumberOfPeople}}</b> Guest</h5>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="col-3 ps-5 mobile-view">
+                      <div class="" style="height: 100%">
+                        {% if data.NumberOfRooms > 1 %}
+                        <h5><b>{{data.NumberOfRooms}}</b> Rooms</h5>
+                        {% else %}
+                        <h5><b>{{data.NumberOfRooms}}</b> Room</h5>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row mobile-view">
+                    <div class="col-6 mobile-view m-view-left-pad">
+                      <div class="d-flex flex-column justify-content-center" style="height: 100%">
+                        <h5 class="fw-normal">TOTAL AMOUNT</h5>
+                        <h4 class="">Rs. {{ data.Cost }}</h4>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             {% endfor %}
       {% endif %}
     </div>
