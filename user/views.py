@@ -68,6 +68,6 @@ def gettrips(request):
         if trips.count() == 0:
             return render(request , 'trips.html' , {"count" : 0})
         else:
-            return HttpResponse("trips")
+            return render(request , 'trips.html' , {"count" : trips.count() , "trips" : trips})
     else:
         return render(request , 'signin.html')
