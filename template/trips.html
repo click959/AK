@@ -154,7 +154,7 @@
 
     <!-- main body -->
     <div class="container-fluid">
-      <h2 class="ms-5 mt-4" id="heading">Your Cart</h2>
+      <h2 class="ms-5 mt-4" id="heading">Your Trips</h2>
 
       <div class="container-fluid" style="height: 0.7vmax"></div>
 
@@ -169,7 +169,7 @@
       
       {% else %}
             {% for data in trips %}
-                {{trip.OrderId}}
+                <p>{{data.OrderId}}</p>
             {% endfor %}
       {% endif %}
     </div>
